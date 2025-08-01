@@ -1,0 +1,65 @@
+/* Custom styles for Python Monolith Web App */
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+main.container {
+    background: var(--pico-background-color);
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    text-align: center;
+    color: var(--pico-muted-color);
+    margin-bottom: 2rem;
+}
+
+section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border: 1px solid var(--pico-muted-border-color);
+    border-radius: 0.5rem;
+}
+
+section h2 {
+    margin-top: 0;
+    color: var(--pico-color);
+}
+
+.success {
+    background: var(--pico-ins-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--pico-primary-border);
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--pico-muted-border-color);
+}
+
+/* HTMX loading indicator */
+.htmx-indicator {
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+}
+
+.htmx-request .htmx-indicator {
+    opacity: 1;
+}
+
+.htmx-request.htmx-indicator {
+    opacity: 1;
+}

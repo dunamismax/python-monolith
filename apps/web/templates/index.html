@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Monolith - Web App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <script src="https://unpkg.com/htmx.org@1.9.8"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>🐍 Python Monolith</h1>
+            <p>Universal Python repository for web apps, CLI tools, TUIs, and GUIs</p>
+        </header>
+        
+        <section>
+            <h2>FastAPI + HTMX Demo</h2>
+            <p>This is a simple demonstration of FastAPI with HTMX integration using Pico.css for styling.</p>
+            
+            <div id="htmx-demo">
+                <button 
+                    class="contrast" 
+                    hx-post="/clicked" 
+                    hx-target="#htmx-demo" 
+                    hx-swap="innerHTML"
+                >
+                    Click me with HTMX!
+                </button>
+            </div>
+        </section>
+        
+        <section x-data="{ count: 0 }">
+            <h2>Alpine.js Demo</h2>
+            <p>This demonstrates lightweight client-side reactivity with Alpine.js.</p>
+            <p>Count: <span x-text="count"></span></p>
+            <button @click="count++" class="secondary">Increment with Alpine.js</button>
+            <button @click="count = 0" class="outline">Reset</button>
+        </section>
+        
+        <footer>
+            <p><small>Built with FastAPI, HTMX, Alpine.js, and Pico.css</small></p>
+        </footer>
+    </main>
+</body>
+</html>

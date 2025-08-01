@@ -1,0 +1,112 @@
+[project]
+name = "python-monolith"
+version = "0.1.0"
+description = "Universal Python monolith repository for web apps, CLI tools, TUIs, GUIs, and more"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    # Web Framework
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "jinja2>=3.1.2",
+    "fasthx>=0.2.0",
+    
+    # Templating Extensions
+    "markupsafe>=2.1.3",
+    
+    # Content Processing
+    "markdown>=3.5.0",
+    "python-frontmatter>=1.0.0",
+    "pygments>=2.16.0",
+    "pymdown-extensions>=10.3.0",
+    
+    # CLI Framework
+    "typer>=0.9.0",
+    "rich>=13.6.0",
+    
+    # TUI Framework
+    "textual>=0.44.0",
+    
+    # GUI Framework
+    "nicegui>=1.4.0",
+    
+    # HTTP Client
+    "httpx>=0.25.0",
+    
+    # Development Tools
+    "ruff>=0.1.0",
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit>=3.5.0",
+    "mypy>=1.6.0",
+]
+
+[project.scripts]
+launcher = "apps.launcher.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["apps", "shared", "scripts"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "ARG", # flake8-unused-arguments
+    "SIM", # flake8-simplify
+    "TCH", # flake8-type-checking
+    "PIE", # flake8-pie
+    "A",   # flake8-builtins
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "B904",  # raise from e / raise from None
+    "C901",  # too complex
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**/*" = ["ARG", "S101"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-v --tb=short"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
